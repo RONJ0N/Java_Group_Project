@@ -13,9 +13,7 @@ public class Attendee {
         attendedEvents.add(eventName);
     }
 
-    public void submitFeedback(String eventName, String feedback) {
-        // Submit feedback for the event
-    }
+ 
 
     public String getAttendeeName() {
         return attendeeName;
