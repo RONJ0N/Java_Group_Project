@@ -9,30 +9,51 @@ public class EventManagementSystem {
 
         // Pre-loading data (optional)
         preLoadData(organizer);
-
         boolean exit = false;
         while (!exit) {
-            printMenu();
+          printMainMenu();
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline character
 
             switch (choice) {
                 case 1:
-                    createEvent(organizer, scanner);
+                    // Existing logic
+                    boolean exitSubMenu = false;
+                    while (!exitSubMenu) {
+                        printMenu();
+                        int subChoice = scanner.nextInt();
+                        scanner.nextLine(); // Consume newline character
+
+                        switch (subChoice) {
+                            case 1:
+                                createEvent(organizer, scanner);
+                                break;
+                            case 2:
+                                RSVPToEvent(organizer, scanner);
+                                break;
+                            case 3:
+                                submitFeedback(organizer, scanner);
+                                break;
+                            case 4:
+                                viewEvents(organizer);
+                                break;
+                            case 5:
+                                viewAttendeeDetails(organizer, scanner);
+                                break;
+                            case 6:
+                                exitSubMenu = true;
+                                break;
+                            default:
+                                System.out.println("Invalid choice. Please try again.");
+                        }
+                    }
                     break;
                 case 2:
-                    RSVPToEvent(organizer, scanner);
+                    // Different logic for option 2
+                    System.out.println("Different logic for option 2");
+                    // Place your alternative logic here
                     break;
                 case 3:
-                    submitFeedback(organizer, scanner);
-                    break;
-                case 4:
-                    viewEvents(organizer);
-                    break;
-                case 5:
-                    viewAttendeeDetails(organizer, scanner);
-                    break;
-                case 6:
                     exit = true;
                     System.out.println("Exiting Event Management System. Goodbye!");
                     break;
@@ -42,8 +63,17 @@ public class EventManagementSystem {
         }
 
         scanner.close();
-    }
 
+    }
+    private static void printMainMenu() {
+    	
+    	  System.out.println("Main Menu");
+          System.out.println("1. Event Management");
+          System.out.println("2. Different Logic");
+          System.out.println("3. Exit");
+    	
+    }
+    
     private static void printMenu() {
         System.out.println("\n--- Event Management System Menu ---");
         System.out.println("1. Create Event");
